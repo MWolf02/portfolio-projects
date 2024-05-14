@@ -9,10 +9,36 @@ import {
   disablePageScroll,
   enablePageScroll,
 } from "scroll-lock"; /* When user is in the menu, they wont be able to scroll */
+import Login from "./Login-Signup/Login";
+import SignUp from "./Login-Signup/Signup";
 
 const Header = () => {
   const pathname = useLocation();
   const [openNavigation, setOpenNavigation] = useState(false);
+  const [openLogin, setOpenLogin] = useState(false);
+  const [isSignUp, setIsSignUp] = useState(false);
+
+  const toggleLoginSignup = (isSignUp) => {
+    setOpenLogin(true);
+    setIsSignUp(isSignUp);
+  };
+
+  const toggleOpenLogin = (signUp) => {
+    if (openLogin) {
+      setOpenLogin(false);
+      disablePageScroll();
+    } else {
+      setOpenLogin(true);
+      setIsSignUp(signUp);
+      disablePageScroll();
+    }
+  };
+
+  const onClose = () => {
+    setOpenLogin(false);
+    setIsSignUp(false);
+    enablePageScroll();
+  };
 
   const toggleNavigation = () => {
     if (openNavigation) {
@@ -24,7 +50,7 @@ const Header = () => {
     }
   }; /* Arrow function that allows the user to open and close the navigation menu - using if/else statement */
 
-  const handleClick = () => {
+  const handleNavigationClick = () => {
     if (!openNavigation) return;
 
     enablePageScroll();
@@ -34,7 +60,9 @@ const Header = () => {
   return (
     <div
       className={`fixed top-0 left-0 w-full z-50  border-b border-n-6 lg:bg-n-8/90 lg:backdrop-blur-sm ${
-        openNavigation ? "bg-n-8" : "bg-n-8/90 backdrop-blur-sm"
+        openNavigation
+          ? "bg-n-8"
+          : "bg-n-8/90 backdrop-blur-sm"
       }`}
     >
       <div className="flex items-center px-5 lg:px-7.5 xl:px-10 max-lg:py-4">
@@ -52,7 +80,7 @@ const Header = () => {
               <a
                 key={item.id}
                 href={item.url}
-                onClick={handleClick}
+                onClick={handleNavigationClick}
                 className={`block relative font-code text-2xl uppercase text-n-1 transition-colors hover:text-color-1 ${
                   item.onlyMobile ? "lg:hidden" : ""
                 } px-6 py-6 md:py-8 lg:-mr-0.25 lg:text-xs lg:font-semibold ${
@@ -66,18 +94,21 @@ const Header = () => {
             ))}
           </div>
 
-          <HamburgerMenu/>
+          <HamburgerMenu />
         </nav>
 
         <a
           href="#signup"
           className="button hidden mr-8 text-n-1/50 transition-colors hover:text-n-1 lg:block"
+          onClick={() => toggleOpenLogin(true)}
         >
           New account
         </a>
-        <Button className="hidden lg:flex" href="#login">
-          Sign in
-        </Button>
+        <a href="#login" onClick={() => toggleOpenLogin(false)}>
+          <Button className="hidden lg:flex" href="#login">
+            Sign In
+          </Button>
+        </a>
 
         <Button
           className="ml-auto lg:hidden"
@@ -87,6 +118,12 @@ const Header = () => {
           <MenuSvg openNavigation={openNavigation} />
         </Button>
       </div>
+      {openLogin &&
+        (isSignUp ? (
+          <SignUp onClose={onClose} toggleLoginSignup={toggleLoginSignup} />
+        ) : (
+          <Login onClose={onClose} toggleLoginSignup={toggleLoginSignup} />
+        ))}
     </div>
   );
 };

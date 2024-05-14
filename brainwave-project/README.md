@@ -1,8 +1,3 @@
-# React + Vite
+In this project, i follow along a youtube tutorial, building a fully responsive UI/UX website called "brainwave".  It's inspired by the teachings of the "Javascript Mastery" YouTube channel, but I also added some personal touches and functionality.  With its sleek design and good marketing, it is aiming a getting the customer to buy a digital service, that is using the newest of AI capabilites and functionality.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The website is purely made for practice purposes, to gain more hands-on practice with tailwindcss and sharpen my React skills. This project will be displayed in my portfolio. 
