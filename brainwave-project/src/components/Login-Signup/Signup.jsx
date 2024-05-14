@@ -22,26 +22,6 @@ const SignUp = ({ onClose, toggleLoginSignup }) => {
     }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    // Perform form validation here (e.g., check if fields are filled out)
-
-    // Send form data to backend for processing (replace 'YOUR_API_ENDPOINT' with actual endpoint)
-    try {
-      const response = await fetch("YOUR_API_ENDPOINT", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-      const data = await response.json();
-      // Handle success response (e.g., display success message)
-    } catch (error) {
-      // Handle error (e.g., display error message)
-    }
-  };
-
   return (
     <div
       id="signup"
@@ -50,7 +30,6 @@ const SignUp = ({ onClose, toggleLoginSignup }) => {
       <form
         id="modal"
         className="relative z-1 bg-n-6 rounded-lg shadow-md p-16 max-h-[40rem] h-full max-w-xl w-full flex flex-col justify-between"
-        onSubmit={handleSubmit}
       >
         <IoClose
           className="absolute top-2 right-2 text-3xl cursor-pointer"
