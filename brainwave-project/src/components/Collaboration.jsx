@@ -2,7 +2,7 @@ import { brainwaveSymbol, check } from "../assets";
 import { collabApps, collabContent, collabText } from "../constants";
 import Button from "./Button";
 import Section from "./Section";
-import {LeftCurve, RightCurve} from './design/Collaboration'
+import { LeftCurve, RightCurve } from "./design/Collaboration";
 
 const Collaboration = () => {
   return (
@@ -25,7 +25,7 @@ const Collaboration = () => {
               </li>
             ))}
           </ul>
-          <Button>Try it Now</Button>
+          <Button href="#pricing">Try it Now</Button>
         </div>
         <div className="lg:ml-auto xl:w-[38rem] mt-4">
           <p className="body-2 mb-4 text-n-4 md:mb-16 lg:mb-32 lg:w-[22rem] lg:mx-auto">
@@ -52,7 +52,11 @@ const Collaboration = () => {
                     index * 45
                   }`}
                 >
-                  <div className={`relative -top-[1.6rem] flex w-[3.2rem] h-[3.2rem] bg-n-7 border border-n-1/15 rounded-xl -rotate-${index * 45}`}>
+                  <div
+                    className={`relative -top-[1.6rem] flex w-[3.2rem] h-[3.2rem] bg-n-7 border border-n-1/15 rounded-xl -rotate-${
+                      index * 45
+                    }`}
+                  >
                     <img
                       className="m-auto"
                       width={app.width}
@@ -64,8 +68,8 @@ const Collaboration = () => {
                 </li>
               ))}
             </ul>
-            <LeftCurve/>
-            <RightCurve/>
+            <LeftCurve />
+            <RightCurve />
           </div>
         </div>
       </div>
